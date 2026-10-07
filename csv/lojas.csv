@@ -1,0 +1,33 @@
+﻿cod_loja;nome_loja;canal;cidade;uf;data_inauguracao;data_encerramento
+1;FarmaVida São Paulo - Paulista;Loja Física;São Paulo;SP;;
+2;FarmaVida São Paulo - Shopping Ibirapuera;Loja Física;São Paulo;SP;;
+3;FarmaVida Rio de Janeiro - Centro;Loja Física;Rio de Janeiro;RJ;;
+4;FarmaVida Rio de Janeiro - Barra;Loja Física;Rio de Janeiro;RJ;;
+5;FarmaVida Belo Horizonte;Loja Física;Belo Horizonte;MG;;
+6;FarmaVida Curitiba;Loja Física;Curitiba;PR;;
+7;FarmaVida Porto Alegre;Loja Física;Porto Alegre;RS;;
+8;FarmaVida Salvador;Loja Física;Salvador;BA;;
+9;FarmaVida Recife;Loja Física;Recife;PE;;
+10;FarmaVida Fortaleza;Loja Física;Fortaleza;CE;;
+11;FarmaVida Brasília;Loja Física;Brasília;DF;;
+12;FarmaVida Campinas;Loja Física;Campinas;SP;;
+13;FarmaVida Goiânia;Loja Física;Goiânia;GO;;
+14;FarmaVida Florianópolis;Loja Física;Florianopolis;SC;;
+15;FarmaVida Vitória;Loja Física;Vitória;ES;;
+16;FarmaVida Natal;Loja Física;Natal;RN;;
+17;FarmaVida Ribeirão Preto;Loja Física;Ribeirão Preto;SP;;
+18;FarmaVida Guarulhos;Loja Física;Guarulhos;SP;;
+19;FarmaVida Niterói;Loja Física;Niterói;RJ;;
+20;FarmaVida São Bernardo do Campo;Loja Física;Sao Bernardo do Campo;SP;;
+21;FarmaVida Londrina;Loja Física;Londrina;PR;;
+22;FarmaVida Uberlândia;Loja Física;Uberlândia;MG;;
+23;FarmaVida Sorocaba;Loja Física;Sorocaba;SP;;
+24;FarmaVida Joinville;Loja Física;Joinville;SC;;
+25;FarmaVida Juiz de Fora;Loja Física;Juiz de Fora;MG;;2024-06-30
+26;FarmaVida Santos;Loja Física;Santos;SP;;
+27;FarmaVida João Pessoa;Loja Física;João Pessoa;PB;;
+28;FarmaVida Campo Grande;Loja Física;Campo Grande;MS;2024-03-01;
+29;FarmaVida Cuiabá;Loja Física;Cuiabá;MT;2024-07-15;
+30;E-commerce Sudeste;E-commerce;São Paulo;SP;;
+31;E-commerce Nordeste;E-commerce;Recife;PE;;
+32;E-commerce Sul;E-commerce;Curitiba;PR;;
