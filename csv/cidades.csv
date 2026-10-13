@@ -1,0 +1,51 @@
+﻿cidade_uf;cidade;uf;regiao;latitude;longitude;populacao_estimada
+São Paulo-SP;São Paulo;SP;Sudeste;-23.5505;-46.6333;11450000
+Rio de Janeiro-RJ;Rio de Janeiro;RJ;Sudeste;-22.9068;-43.1729;6211000
+Belo Horizonte-MG;Belo Horizonte;MG;Sudeste;-19.9167;-43.9345;2316000
+Curitiba-PR;Curitiba;PR;Sul;-25.4284;-49.2733;1773000
+Porto Alegre-RS;Porto Alegre;RS;Sul;-30.0346;-51.2177;1332000
+Salvador-BA;Salvador;BA;Nordeste;-12.9714;-38.5124;2418000
+Recife-PE;Recife;PE;Nordeste;-8.0476;-34.877;1488000
+Fortaleza-CE;Fortaleza;CE;Nordeste;-3.7172;-38.5433;2428000
+Brasília-DF;Brasília;DF;Centro-Oeste;-15.7975;-47.8919;2817000
+Campinas-SP;Campinas;SP;Sudeste;-22.9099;-47.0626;1139000
+Goiânia-GO;Goiânia;GO;Centro-Oeste;-16.6869;-49.2648;1437000
+Florianópolis-SC;Florianópolis;SC;Sul;-27.5954;-48.548;537000
+Vitória-ES;Vitória;ES;Sudeste;-20.3155;-40.3128;322000
+Natal-RN;Natal;RN;Nordeste;-5.7945;-35.211;751000
+Ribeirão Preto-SP;Ribeirão Preto;SP;Sudeste;-21.1704;-47.8103;698000
+Guarulhos-SP;Guarulhos;SP;Sudeste;-23.4538;-46.5333;1291000
+Niterói-RJ;Niterói;RJ;Sudeste;-22.8833;-43.1036;481000
+São Bernardo do Campo-SP;São Bernardo do Campo;SP;Sudeste;-23.6914;-46.5646;810000
+Londrina-PR;Londrina;PR;Sul;-23.3045;-51.1696;555000
+Uberlândia-MG;Uberlândia;MG;Sudeste;-18.9186;-48.2772;713000
+Sorocaba-SP;Sorocaba;SP;Sudeste;-23.5015;-47.4526;723000
+Joinville-SC;Joinville;SC;Sul;-26.3045;-48.8487;616000
+Juiz de Fora-MG;Juiz de Fora;MG;Sudeste;-21.7642;-43.3503;540000
+Santos-SP;Santos;SP;Sudeste;-23.9608;-46.3336;418000
+João Pessoa-PB;João Pessoa;PB;Nordeste;-7.115;-34.861;833000
+Campo Grande-MS;Campo Grande;MS;Centro-Oeste;-20.4697;-54.6201;898000
+Cuiabá-MT;Cuiabá;MT;Centro-Oeste;-15.601;-56.0974;650000
+Manaus-AM;Manaus;AM;Norte;-3.119;-60.0217;2063000
+Belém-PA;Belém;PA;Norte;-1.4558;-48.5024;1303000
+Maceió-AL;Maceió;AL;Nordeste;-9.6658;-35.7353;957000
+São Luís-MA;São Luís;MA;Nordeste;-2.5297;-44.2825;1037000
+Teresina-PI;Teresina;PI;Nordeste;-5.0892;-42.8019;866000
+Aracaju-SE;Aracaju;SE;Nordeste;-10.9091;-37.0677;602000
+Porto Velho-RO;Porto Velho;RO;Norte;-8.7612;-63.9004;460000
+Palmas-TO;Palmas;TO;Norte;-10.184;-48.3336;302000
+Macapá-AP;Macapá;AP;Norte;0.0349;-51.0694;442000
+Boa Vista-RR;Boa Vista;RR;Norte;2.8235;-60.6758;413000
+Rio Branco-AC;Rio Branco;AC;Norte;-9.9747;-67.8243;364000
+Santo André-SP;Santo André;SP;Sudeste;-23.6737;-46.5432;748000
+Osasco-SP;Osasco;SP;Sudeste;-23.5325;-46.7917;728000
+São José dos Campos-SP;São José dos Campos;SP;Sudeste;-23.1896;-45.8841;697000
+Maringá-PR;Maringá;PR;Sul;-23.4205;-51.9333;409000
+Caxias do Sul-RS;Caxias do Sul;RS;Sul;-29.1678;-51.1794;463000
+Blumenau-SC;Blumenau;SC;Sul;-26.9194;-49.0661;361000
+Feira de Santana-BA;Feira de Santana;BA;Nordeste;-12.2664;-38.9663;616000
+Campina Grande-PB;Campina Grande;PB;Nordeste;-7.2307;-35.8817;419000
+Caruaru-PE;Caruaru;PE;Nordeste;-8.276;-35.9819;378000
+Anápolis-GO;Anápolis;GO;Centro-Oeste;-16.3281;-48.9534;398000
+Montes Claros-MG;Montes Claros;MG;Sudeste;-16.735;-43.8617;414000
+Petrópolis-RJ;Petrópolis;RJ;Sudeste;-22.505;-43.1789;278000

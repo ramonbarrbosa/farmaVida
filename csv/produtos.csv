@@ -1,0 +1,135 @@
+﻿cod_produto;nome_produto;categoria;subcategoria;tipo_medicamento;marca
+1;Dipirona 500mg 10cp;Medicamentos;Analgésicos e Antitérmicos;Genérico;Medley
+2;Dipirona 1g 10cp;Medicamentos;Analgésicos e Antitérmicos;Genérico;EMS
+3;Paracetamol 750mg 20cp;Medicamentos;Analgésicos e Antitérmicos;Genérico;EMS
+4;Analgex Dipirona 1g 10cp;Medicamentos;Analgésicos e Antitérmicos;Referência;Analgex
+5;Termoflex Paracetamol 750mg 20cp;Medicamentos;Analgésicos e Antitérmicos;Referência;Termoflex
+6;Dorzin Relaxante Muscular 10cp;Medicamentos;Analgésicos e Antitérmicos;Referência;Dorzin
+7;Gripaflu Dia 10cp;Medicamentos;Antigripais;Referência;Gripaflu
+8;Gripaflu Noite 10cp;Medicamentos;Antigripais;Referência;Gripaflu
+9;Antigripal Composto 20cp;Medicamentos;Antigripais;Genérico;EMS
+10;Xarope Expectorante 120ml;Medicamentos;Antigripais;Referência;Respirex
+11;Xarope Tosse Seca 120ml;Medicamentos;Antigripais;Genérico;Medley
+12;Descongestionante Nasal 10ml;Medicamentos;Antigripais;Referência;Nasalin
+13;Ibuprofeno 400mg 10cp;Medicamentos;Anti-inflamatórios;Genérico;EMS
+14;Ibuprofeno 600mg 20cp;Medicamentos;Anti-inflamatórios;Genérico;Medley
+15;Nimesulida 100mg 12cp;Medicamentos;Anti-inflamatórios;Genérico;EMS
+16;Inflamyl Diclofenaco 50mg 20cp;Medicamentos;Anti-inflamatórios;Referência;Inflamyl
+17;Inflamyl Gel 60g;Medicamentos;Anti-inflamatórios;Referência;Inflamyl
+18;Cetoprofeno 100mg 20cp;Medicamentos;Anti-inflamatórios;Genérico;Medley
+19;Omeprazol 20mg 28cp;Medicamentos;Gastrointestinais;Genérico;EMS
+20;Gastrozol Pantoprazol 40mg 28cp;Medicamentos;Gastrointestinais;Referência;Gastrozol
+21;Antiácido Efervescente 10 env;Medicamentos;Gastrointestinais;Referência;Estomax
+22;Probiótico 10 cáps;Medicamentos;Gastrointestinais;Referência;Floratil+
+23;Soro de Reidratação Oral;Medicamentos;Gastrointestinais;Genérico;EMS
+24;Simeticona Gotas 15ml;Medicamentos;Gastrointestinais;Genérico;Medley
+25;Loratadina 10mg 12cp;Medicamentos;Antialérgicos;Genérico;EMS
+26;Desloratadina 5mg 10cp;Medicamentos;Antialérgicos;Genérico;Medley
+27;Alergin Fexofenadina 180mg 10cp;Medicamentos;Antialérgicos;Referência;Alergin
+28;Dexclorfeniramina 2mg 20cp;Medicamentos;Antialérgicos;Genérico;EMS
+29;Losartana 50mg 30cp;Medicamentos;Uso Contínuo - Hipertensão;Genérico;EMS
+30;Hidroclorotiazida 25mg 30cp;Medicamentos;Uso Contínuo - Hipertensão;Genérico;Medley
+31;Anlodipino 5mg 30cp;Medicamentos;Uso Contínuo - Hipertensão;Genérico;EMS
+32;Pressocor Valsartana 160mg 28cp;Medicamentos;Uso Contínuo - Hipertensão;Referência;Pressocor
+33;Enalapril 10mg 30cp;Medicamentos;Uso Contínuo - Hipertensão;Genérico;Medley
+34;Metformina 850mg 30cp;Medicamentos;Uso Contínuo - Diabetes;Genérico;EMS
+35;Gliclazida 30mg 30cp;Medicamentos;Uso Contínuo - Diabetes;Genérico;Medley
+36;Glicomax XR 500mg 30cp;Medicamentos;Uso Contínuo - Diabetes;Referência;Glicomax
+37;Sinvastatina 20mg 30cp;Medicamentos;Uso Contínuo - Colesterol;Genérico;EMS
+38;Atorvastatina 20mg 30cp;Medicamentos;Uso Contínuo - Colesterol;Genérico;Medley
+39;Rosuvastatina 10mg 30cp;Medicamentos;Uso Contínuo - Colesterol;Genérico;EMS
+40;Lipidex Rosuvastatina 20mg 30cp;Medicamentos;Uso Contínuo - Colesterol;Referência;Lipidex
+41;Amoxicilina 500mg 21cp;Medicamentos;Antibióticos;Genérico;EMS
+42;Azitromicina 500mg 3cp;Medicamentos;Antibióticos;Genérico;Medley
+43;Cefalexina 500mg 8cp;Medicamentos;Antibióticos;Genérico;EMS
+44;Amoxiclav 875mg 14cp;Medicamentos;Antibióticos;Referência;Amoxiclav
+45;Pomada para Assaduras 45g;Medicamentos;Dermatológicos;Referência;BabyCare
+46;Cetoconazol Creme 30g;Medicamentos;Dermatológicos;Genérico;EMS
+47;Hidrocortisona Creme 15g;Medicamentos;Dermatológicos;Genérico;Medley
+48;Cicatrizante Gel 30g;Medicamentos;Dermatológicos;Referência;Cicatrix
+49;Creme Dental Sorriso+ 90g;Higiene Pessoal;Higiene Bucal;Não se aplica;Sorriso+
+50;Creme Dental Sorriso+ Clareador 70g;Higiene Pessoal;Higiene Bucal;Não se aplica;Sorriso+
+51;Creme Dental FarmaVida 90g;Higiene Pessoal;Higiene Bucal;Não se aplica;FarmaVida
+52;Escova Dental Sorriso+ Macia;Higiene Pessoal;Higiene Bucal;Não se aplica;Sorriso+
+53;Escova Dental FarmaVida;Higiene Pessoal;Higiene Bucal;Não se aplica;FarmaVida
+54;Fio Dental Sorriso+ 50m;Higiene Pessoal;Higiene Bucal;Não se aplica;Sorriso+
+55;Enxaguante Bucal Sorriso+ 500ml;Higiene Pessoal;Higiene Bucal;Não se aplica;Sorriso+
+56;Shampoo Vitalis 400ml;Higiene Pessoal;Cabelos;Não se aplica;Vitalis
+57;Condicionador Vitalis 400ml;Higiene Pessoal;Cabelos;Não se aplica;Vitalis
+58;Shampoo Anticaspa Vitalis 200ml;Higiene Pessoal;Cabelos;Não se aplica;Vitalis
+59;Shampoo Infantil PuraPele 200ml;Higiene Pessoal;Cabelos;Não se aplica;PuraPele
+60;Condicionador Infantil PuraPele 200ml;Higiene Pessoal;Cabelos;Não se aplica;PuraPele
+61;Shampoo FarmaVida 350ml;Higiene Pessoal;Cabelos;Não se aplica;FarmaVida
+62;Condicionador FarmaVida 350ml;Higiene Pessoal;Cabelos;Não se aplica;FarmaVida
+63;Desodorante Aerosol Fresh 150ml;Higiene Pessoal;Desodorantes;Não se aplica;Fresh
+64;Desodorante Roll-on Fresh 50ml;Higiene Pessoal;Desodorantes;Não se aplica;Fresh
+65;Desodorante Aerosol FarmaVida 150ml;Higiene Pessoal;Desodorantes;Não se aplica;FarmaVida
+66;Fralda BabyCare M 30un;Higiene Pessoal;Infantil;Não se aplica;BabyCare
+67;Fralda BabyCare G 28un;Higiene Pessoal;Infantil;Não se aplica;BabyCare
+68;Fralda BabyCare XG 26un;Higiene Pessoal;Infantil;Não se aplica;BabyCare
+69;Lenço Umedecido BabyCare 50un;Higiene Pessoal;Infantil;Não se aplica;BabyCare
+70;Lenço Umedecido FarmaVida 50un;Higiene Pessoal;Infantil;Não se aplica;FarmaVida
+71;Sabonete Líquido Infantil PuraPele 200ml;Higiene Pessoal;Infantil;Não se aplica;PuraPele
+72;Sabonete em Barra Pura 90g;Higiene Pessoal;Banho e Cuidados;Não se aplica;Pura
+73;Sabonete Líquido Pura 250ml;Higiene Pessoal;Banho e Cuidados;Não se aplica;Pura
+74;Sabonete Íntimo Pura 200ml;Higiene Pessoal;Banho e Cuidados;Não se aplica;Pura
+75;Algodão FarmaVida 50g;Higiene Pessoal;Banho e Cuidados;Não se aplica;FarmaVida
+76;Hastes Flexíveis FarmaVida 150un;Higiene Pessoal;Banho e Cuidados;Não se aplica;FarmaVida
+77;Protetor Solar Solaris FPS 30 120ml;Cosméticos;Proteção Solar;Não se aplica;Solaris
+78;Protetor Solar Solaris FPS 50 120ml;Cosméticos;Proteção Solar;Não se aplica;Solaris
+79;Protetor Solar Facial Solaris FPS 60 50g;Cosméticos;Proteção Solar;Não se aplica;Solaris
+80;Protetor Solar Infantil Solaris FPS 50;Cosméticos;Proteção Solar;Não se aplica;Solaris
+81;Protetor Solar FarmaVida FPS 50 120ml;Cosméticos;Proteção Solar;Não se aplica;FarmaVida
+82;Loção Pós-Sol Solaris 200ml;Cosméticos;Proteção Solar;Não se aplica;Solaris
+83;Gel Pós-Sol Aloe FarmaVida 200ml;Cosméticos;Proteção Solar;Não se aplica;FarmaVida
+84;Protetor Labial FPS 30;Cosméticos;Proteção Solar;Não se aplica;Solaris
+85;Hidratante Corporal DermaPure 400ml;Cosméticos;Hidratantes;Não se aplica;DermaPure
+86;Creme para Mãos DermaPure 50g;Cosméticos;Hidratantes;Não se aplica;DermaPure
+87;Hidratante Corporal FarmaVida 400ml;Cosméticos;Hidratantes;Não se aplica;FarmaVida
+88;Manteiga Corporal DermaPure 200g;Cosméticos;Hidratantes;Não se aplica;DermaPure
+89;Sérum Vitamina C DermaPure 30ml;Cosméticos;Dermocosméticos;Não se aplica;DermaPure
+90;Sérum Ácido Hialurônico DermaPure 30ml;Cosméticos;Dermocosméticos;Não se aplica;DermaPure
+91;Água Micelar DermaPure 200ml;Cosméticos;Dermocosméticos;Não se aplica;DermaPure
+92;Sabonete Facial Oil Control 150ml;Cosméticos;Dermocosméticos;Não se aplica;DermaPure
+93;Creme Anti-idade Noite DermaPure 50g;Cosméticos;Dermocosméticos;Não se aplica;DermaPure
+94;Gel Antiacne DermaPure 40g;Cosméticos;Dermocosméticos;Não se aplica;DermaPure
+95;Hidratante Facial DermaPure 50g;Cosméticos;Dermocosméticos;Não se aplica;DermaPure
+96;Base Líquida Bella 30ml;Cosméticos;Maquiagem;Não se aplica;Bella
+97;Máscara de Cílios Bella;Cosméticos;Maquiagem;Não se aplica;Bella
+98;Batom Matte Bella;Cosméticos;Maquiagem;Não se aplica;Bella
+99;Corretivo Bella;Cosméticos;Maquiagem;Não se aplica;Bella
+100;Demaquilante Bifásico Bella 120ml;Cosméticos;Maquiagem;Não se aplica;Bella
+101;Vitamina C 1g 10 Efervescentes;Suplementos;Vitaminas e Minerais;Não se aplica;NaturBem
+102;Vitamina C 500mg 60 cáps;Suplementos;Vitaminas e Minerais;Não se aplica;NaturBem
+103;Vitamina C FarmaVida 1g 10 Efervescentes;Suplementos;Vitaminas e Minerais;Não se aplica;FarmaVida
+104;Vitamina D 2000UI 60 cáps;Suplementos;Vitaminas e Minerais;Não se aplica;NaturBem
+105;Vitamina D FarmaVida 2000UI 60 cáps;Suplementos;Vitaminas e Minerais;Não se aplica;FarmaVida
+106;Multivitamínico A-Z 60cp;Suplementos;Vitaminas e Minerais;Não se aplica;NaturBem
+107;Ômega 3 1000mg 120 cáps;Suplementos;Vitaminas e Minerais;Não se aplica;NaturBem
+108;Complexo B 60cp;Suplementos;Vitaminas e Minerais;Não se aplica;NaturBem
+109;Zinco Quelato 60 cáps;Suplementos;Vitaminas e Minerais;Não se aplica;NaturBem
+110;Magnésio Dimalato 60 cáps;Suplementos;Vitaminas e Minerais;Não se aplica;NaturBem
+111;Whey Protein BioForte 900g;Suplementos;Nutrição Esportiva;Não se aplica;BioForte
+112;Whey Isolado BioForte 900g;Suplementos;Nutrição Esportiva;Não se aplica;BioForte
+113;Creatina BioForte 300g;Suplementos;Nutrição Esportiva;Não se aplica;BioForte
+114;Creatina FarmaVida 300g;Suplementos;Nutrição Esportiva;Não se aplica;FarmaVida
+115;BCAA BioForte 120 cáps;Suplementos;Nutrição Esportiva;Não se aplica;BioForte
+116;Barra de Proteína BioForte cx 12un;Suplementos;Nutrição Esportiva;Não se aplica;BioForte
+117;Própolis Spray 30ml;Suplementos;Fitoterápicos e Bem-Estar;Não se aplica;NaturBem
+118;Colágeno Hidrolisado 300g;Suplementos;Fitoterápicos e Bem-Estar;Não se aplica;NaturBem
+119;Melatonina 0,21mg 60cp;Suplementos;Fitoterápicos e Bem-Estar;Não se aplica;NaturBem
+120;Fibras Solúveis 260g;Suplementos;Fitoterápicos e Bem-Estar;Não se aplica;NaturBem
+121;Curativo Adesivo 40un;Bem-Estar;Primeiros Socorros;Não se aplica;FarmaVida
+122;Soro Fisiológico 0,9% 500ml;Bem-Estar;Primeiros Socorros;Não se aplica;Arboreto
+123;Álcool 70% 1L;Bem-Estar;Primeiros Socorros;Não se aplica;FarmaVida
+124;Gaze Estéril 10un;Bem-Estar;Primeiros Socorros;Não se aplica;Arboreto
+125;Esparadrapo 10cm x 4,5m;Bem-Estar;Primeiros Socorros;Não se aplica;Arboreto
+126;Termômetro Digital;Bem-Estar;Primeiros Socorros;Não se aplica;Termotec
+127;Medidor de Pressão Digital de Pulso;Bem-Estar;Equipamentos de Saúde;Não se aplica;Termotec
+128;Oxímetro de Dedo;Bem-Estar;Equipamentos de Saúde;Não se aplica;Termotec
+129;Nebulizador Ultrassônico;Bem-Estar;Equipamentos de Saúde;Não se aplica;Termotec
+130;Balança Digital;Bem-Estar;Equipamentos de Saúde;Não se aplica;Termotec
+131;Joelheira Elástica;Bem-Estar;Ortopedia e Conforto;Não se aplica;OrtoFit
+132;Palmilha em Gel;Bem-Estar;Ortopedia e Conforto;Não se aplica;OrtoFit
+133;Bolsa Térmica Gel;Bem-Estar;Ortopedia e Conforto;Não se aplica;OrtoFit
+134;Meia de Compressão 20-30mmHg;Bem-Estar;Ortopedia e Conforto;Não se aplica;OrtoFit
