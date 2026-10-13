@@ -1,139 +1,365 @@
+# REQUISITOS DO PROJETO - FARMAVIDA
 
-# REQUISITOS #
+- [x] Verificar as fontes de dados (`farmavida.db` e arquivos `.csv`);
+- [x] Selecionar a melhor opção de ingestão (Importação otimizada no Power BI);
+- [x] Realizar a exploração e validação de schema das tabelas;
+- [x] Estruturar modelo estrela (Star Schema) com tabela dCalendario;
+- [x] Desenvolver relatório executivo consolidado em **4 páginas** para otimização de tempo e entrega de alto impacto;
+- [ ] Construir a documentação executiva e técnica de 10 páginas sobre o projeto.
 
-- Verificar as fontes de dados ou arquivo.db; ok
-- Escolhar qual das opções utilizar (Arquivos .csv ou conexão no banco via odbc); 
-- Realizar a exploração de dados na base;
-- Entender o desafio em questão;
-- Desenvolver o relatório com as devidas análises que respondam as perguntas da diretoria;
-- No final construir uma documentação de 10 páginas sobre o projeto em questão.
+---
 
-## DESENVOLVIMENTO
+## 1. ARQUITETURA DO DASHBOARD (PADRÃO 16:9 - CONSOLIDADO EM 4 PÁGINAS)
 
-Para estruturar o relatório de forma profissional no Power BI (padrão 16:9), cada página precisa funcionar como uma etapa da tomada de decisão da diretoria, dividida em um padrão visual consistente:
+Cada página segue rigorosamente o padrão executivo **1 - 4 - 2 - 1**:
+- **Faixa Superior:** Título, Contexto e Filtros Globais (Período, Região, Canal).
+- **Faixa de KPIs (4 Cards):** Métricas-chave essenciais para tomada de decisão instantânea.
+- **Área Central (2 Visuais de Diagnóstico):** Tendência temporal e composição de fatores.
+- **Área Inferior (1 Tabela/Matriz de Ação):** Visão acionável com formatação condicional para priorização operacional.
 
-Faixa Superior (Cabeçalho & Filtros): Contexto temporal e filtros globais.
-Primeira Faixa (Cards de KPI): Números consolidados de alto impacto com comparações (YoY, vs Meta).
-Área Central (Análise Diagnóstica / Gráficos Principais): O "porquê" dos números (tendência, composição e
-correlação).
+---
 
-Área Inferior (Detalhamento para Ação / Matrizes & Tabelas): Visão acionável para drill-down e plano de
-intervenção.
+### 📄 PÁGINA 1: VISÃO EXECUTIVA & RENTABILIDADE DE CANAIS
+**Pergunta de Negócio:**
+> *"Qual é a real saúde financeira da FarmaVida? Estamos crescendo com lucro sustentável? O canal digital (e-commerce) é rentável frente às lojas físicas?"*
 
-Abaixo está o detalhamento estruturado de cada uma das 6 páginas: ──────
+#### 1. Filtros Globais
+* `Ano / Mês` (dCalendario)
+* `Canal` (Lojas[canal])
+* `Região / UF` (Lojas[uf])
 
-📄 Página 1: Visão Geral Executiva (Executive Overview)
-#### 1. O que responde à Diretoria?
+#### 2. Cards de KPI (4 Cards)
+1. **Faturamento Líquido:** `[Faturamento Líquido]` com indicador YoY `% [Faturamento Líquido YoY]`
+2. **Margem de Contribuição (R$):** `[Margem Contribuicao]`
+3. **Margem de Contribuição (%):** `[% Margem Contribuicao]` com status/meta
+4. **Devoluções:** `[Valor Devoluções]` e `[% Devoluções]`
 
-│ "Qual é a real saúde financeira da FarmaVida? Estamos crescendo com lucro sustentável ou apenas inflando │ faturamento enquanto a margem de contribuição é corroída?"
+#### 3. Visuais Principais (Área Central)
+* **Visual 1 (Evolução Temporal):** Gráfico de Linha e Colunas Combinadas
+  * *Eixo X:* Mês/Ano (`dCalendario[MesAno]`)
+  * *Colunas:* `[Faturamento Líquido]`
+  * *Linha:* `[% Margem Contribuicao]`
+* **Visual 2 (Comparativo de Canais):** Gráfico de Barras Clusterizadas
+  * *Eixo Y:* Canal (`Lojas[canal]`)
+  * *Valores:* `[Faturamento Líquido]` e `[Margem Contribuicao]`
 
-#### 2. Métricas Principais
+#### 4. Detalhamento para Ação (Área Inferior)
+* **Matriz Hierárquica de Rentabilidade:**
+  * *Linhas:* `Lojas[canal]` > `Lojas[uf]` > `Lojas[nome_loja]`
+  * *Colunas:* `[Faturamento Bruto]`, `[Valor Descontos]`, `[Valor Devoluções]`, `[Faturamento Líquido]`, `[CMV]`, `[Margem Contribuicao]`, `[% Margem Contribuicao]` (com barras de dados na margem)
 
-• Faturamento Bruto ($): SUM(Vendas[Valor_Bruto]) 🆗
-• Descontos Concedidos ($ e %): SUM(Vendas[Valor_Desconto]) e [Descontos] / [Fat Bruto] 🆗
-• Devoluções ($): SUM(Devolucoes[Valor_Devolvido]) 🆗 
-• Faturamento Líquido ($): [Fat Bruto] - [Descontos] - [Devolucoes] 🆗
-• CMV ($ e %): Custo das Mercadorias Vendidas 🆗
-• Margem de Contribuição (R$ e %): [Fat Líquido] - [CMV] - [Despesas Variáveis / Comissões] 
-• Ticket Médio ($): [Fat Líquido] / DISTINCTCOUNT(Vendas[Id_Pedido]) 🆗
-• Variações YoY (%): Comparação contra o mesmo período do ano anterior. 🆗
+---
 
-#### 3. Organização Espacial (Wireframe de Layout)
+### 📄 PÁGINA 2: GESTÃO COMERCIAL, METAS & DESCONTOS
+**Pergunta de Negócio:**
+> *"Quem são os vendedores que realmente trazem margem vs. quem bate meta queimando margem com desconto? A política de descontos está sendo respeitada?"*
 
-[Logo FarmaVida] 
-title: VISÃO GERAL EXECUTIVA [Ano] [Mês] [Canal] [Região] 
+#### 1. Filtros
+* `Ano / Mês`
+* `Canal / Loja`
+* `Tipo de Cliente` (Clientes[tipo_pessoa]: PF / PJ)
 
-> CARDS:
-    [Card 1] Fat. Bruto 
-    [Card 2] Fat. Líquido 
-    [Card 3] Margem R$ 
-    [Card 4] MC %
-    [Card 5] Devoluções │ │ R$ XX M (+12% YoY) │ R$ XX M (+8% YoY) │ R$ XX M (-3% YoY) │ XX% (Alerta) │ R$ XX k (X% Fat) │ 
+#### 2. Cards de KPI (4 Cards)
+1. **Meta de Vendas:** `[Total Meta]`
+2. **Realizado vs Meta:** `[Faturamento Líquido]` e `[% Atingimento Meta]`
+3. **Desconto Total Concedido:** `[Valor Descontos]` e `[% Desconto Médio]`
+4. **Furos de Política:** `[% Vendas Fora da Política]` (Alerta se desconto > teto da política comercial)
 
-> GRÁFICOS:
-[Gráfico 1: DRE em Cascata / Waterfall]
-[Gráfico 2: Evolução Temporal] Faturamento Bruto ➔ (-) Descontos ➔ │ Linha 1: Faturamento Líquido 
-(-) Devoluções ➔ (-) CMV ➔ (-) Comissões ➔ │ Linha 2: Margem de Contribuição % 
-Margem de Contribuição Final │ (Eixo X: Meses do Ano)
-[Gráfico 3: Mix por Canal - Barras 100%]
-[Gráfico 4: Top 5 Categorias]
-Participação Fat. Líquido vs. Margem % 
-Ranking de categorias com maior
-(Loja Física vs. E-commerce)
-contribuição de margem líquida
+#### 3. Visuais Principais (Área Central)
+* **Visual 1 (Atingimento por Vendedor):** Gráfico de Barras Horizontais
+  * *Eixo Y:* `Vendedores[nome_vendedor]` (Top 10 ou Geral)
+  * *Eixo X:* `[Faturamento Líquido]` com Linha de Referência `[Total Meta]`
+* **Visual 2 (Elasticidade e Volume por Faixa de Desconto):** Gráfico de Colunas
+  * *Eixo X:* Faixa de Desconto (`0%`, `1-5%`, `6-10%`, `11-15%`, `>15%`)
+  * *Valores:* `[Quantidade Vendida]` e `[% Margem Contribuicao]`
 
-📄 Página 2: Rentabilidade por Canal & Unidades de Negócio
-#### 1. O que responde à Diretoria?
+#### 4. Detalhamento para Ação (Área Inferior)
+* **Tabela de Desempenho e Qualidade de Vendas:**
+  * *Colunas:* `Vendedor`, `Loja`, `Meta`, `Realizado`, `% Atingimento`, `% Desconto Médio`, `Margem Gerada R$`, `% Margem Contribuicao` *(Formatação condicional semáforo)*
 
-│ "O canal digital (e-commerce) é financeiramente sustentável frente às lojas físicas? Quais unidades/CDs dão lucro │ real e quais queimam caixa?"
+---
 
-#### 2. Métricas Principais
+### 📄 PÁGINA 3: INTELIGÊNCIA DE CLIENTES & MIX DE PRODUTOS
+**Pergunta de Negócio:**
+> *"Temos dependência de poucos clientes corporativos (Curva Pareto)? Quais categorias e tipos de medicamentos sustentam o resultado (Marca Própria vs Genéricos)?"*
 
-• Margem de Contribuição por Canal (R$ e %): Demonstrar o peso do frete/plataforma no e-commerce vs. custo operacional das lojas. • Custo Logístico/Frete por Canal ($): Despesa variável associada às entregas do e-commerce. • Faturamento por Loja / Região: SUM(Vendas[Valor_Liquido]) agrupado por Lojas[Nome_Loja]. • Crescimento YoY por Unidade (%): Taxa de expansão individual de cada unidade física e CD.
+#### 1. Filtros
+* `Tipo de Cliente` (PF / PJ)
+* `Categoria de Produto` (`Produtos[categoria]`)
+* `Tipo Medicamento` (`Produtos[tipo_medicamento]`)
 
-#### 3. Organização Espacial (Wireframe de Layout)
+#### 2. Cards de KPI (4 Cards)
+1. **Clientes Ativos:** `[Qtd Clientes Ativos]`
+2. **Ticket Médio:** `[Ticket Médio]`
+3. **Concentração Top 10 Clientes:** `[% Fat Top 10 Clientes]`
+4. **Mix Marca Própria:** `[% Faturamento Marca Própria]` e `[% Margem Marca Própria]`
 
-│ FILTROS: [Canal: Todos/Físico/Online] [Estado/UF] [Centro de Distribuição / Loja] │ │ [Bloco KPI 1: Lojas Físicas] │ [Bloco KPI 2: E-commerce] │ │ Fat: R$ XX M | MC: R$ XX M (MC%: 42%) │ Fat: R$ XX M | MC: R$ XX M (MC%: 18%) │ │ [Visual 1: Mapa Geográfico de Rentabilidade]│ [Visual 2: Dispersão (Scatter Plot)]│ │ • Tamanho da Bolha = Faturamento Líquido │ • Eixo X: Crescimento YoY (%) │ │ • Cor da Bolha = Margem de Contribuição % │ • Eixo Y: Margem de Contribuição % │ │ (Permite identificar cidades deficitárias) │ • Bolhas = Lojas (Quadrantes) │ │ [Visual 3: Matriz Hierárquica DRE de Unidades de Negócio] │ │ Região > Canal > Unidade/Loja │ Fat. Bruto │ Devoluções │ CMV │ Frete │ MC R$ │ MC % │ │ (Com Data Bars na coluna de Margem para destacar anomalias instantaneamente) │ ──────
+#### 3. Visuais Principais (Área Central)
+* **Visual 1 (Curva de Pareto de Clientes):** Gráfico de Linha e Colunas
+  * *Colunas:* Clientes ordenados por faturamento decrescente
+  * *Linha:* `% Acumulado de Faturamento` (Linha de corte nos 80%)
+* **Visual 2 (Rentabilidade do Portfólio):** Gráfico de Barras Clusterizadas
+  * *Eixo Y:* `Produtos[categoria]` ou `Produtos[tipo_medicamento]`
+  * *Eixo X:* `[% Margem Contribuicao]` e `[Faturamento Líquido]`
 
-📄 Página 3: Política Comercial, Descontos & Elasticidade
-#### 1. O que responde à Diretoria?
+#### 4. Detalhamento para Ação (Área Inferior)
+* **Tabela de Clientes Críticos / Produtos em Risco:**
+  * *Linhas:* Clientes PJ com maior faturamento e histórico de descontos, ou produtos com alta venda e margem deprimida.
 
-│ "Conceder descontos maiores gerou ganho de volume compensatório ou apenas destruiu rentabilidade? O time respeitou │ os tetos da política (15% loja, 20% e-commerce, 12% PJ)?"
+---
 
-#### 2. Métricas Principais
+### 📄 PÁGINA 4: DETALHAMENTO TRANSACIONAL & AUDITORIA
+**Pergunta de Negócio:**
+> *"Como auditar um pedido específico, filial ou operação para investigação pontual ou conferência executiva na ponta do lápis?"*
 
-• Desconto Total Concedido ($): SUM(Vendas[Valor_Desconto]) • % Médio de Desconto Praticado: Média ponderada do desconto. • Transações Fora da Política (% e R$): Volume e valor transacionado acima do teto estipulado. • Margem Deixada na Mesa ($): Simulação de ganho caso o teto fosse respeitado. • Elasticidade Volume vs. Desconto: Relação entre % de desconto aplicado e unidades vendidas.
+#### 1. Filtros Avançados
+* `Período Completo`, `Canal`, `Loja`, `Vendedor`, `Cliente`, `Tipo Medicamento`
 
-#### 3. Organização Espacial (Wireframe de Layout)
+#### 2. Cards Resumo de Seleção (3 Cards)
+1. **Qtd Pedidos Selecionados:** `[Total Pedidos]`
+2. **Receita Selecionada:** `[Faturamento Líquido]`
+3. **Margem Média Selecionada:** `[% Margem Contribuicao]`
 
-│ FILTROS: [Canal] [Categoria] [Tipo de Cliente: PF / PJ] [Faixa de Desconto] │ │ [Card 1] Desconto │ [Card 2] % Médio │ [Card 3] Transações │ [Card 4] Margem │ │ Total: R$ XX k │ Desconto: XX% │ Fora Política: XX% │ Queimada: R$ XX k │ │ [Visual 1: Histograma por Faixa de Desconto] │ [Visual 2: Dispersão Desconto x MC]│ │ Barras: Volume Vendido por faixa │ Eixo X: % Desconto Aplicado │ │ (0%, 1-5%, 6-10%, 11-15%, >15%) │ Eixo Y: Margem de Contribuição % │ │ Linha: Margem de Contribuição % │ Mostra se desconto alto traz lucro real │ │ [Visual 3: Aderência à Política por Canal] │ [Visual 4: Simulador What-If Teto] │ │ Barras empilhadas (% Dentro x % Fora) │ Parâmetro deslizante (Slider): │ │ Linha de meta com teto permitido │ "Se o teto fosse 10%, ganho de MC:" │ ──────
+#### 3. Visual Principal (Full-Width)
+* **Tabela Analítica para Drill-Through / Exportação:**
+  * *Campos:* `ID Pedido` | `Data` | `Loja` | `Canal` | `Vendedor` | `Cliente` | `Produto` | `Qtd` | `Preço Unit.` | `Desc. (%)` | `Fat. Líquido` | `Margem R$` | `Margem %`
 
-📄 Página 4: Gestão da Força de Vendas & Metas
-#### 1. O que responde à Diretoria?
+---
 
-│ "Quem são os vendedores que realmente geram caixa vs. quem bate meta 'queimando margem' com desconto máximo? As │ metas de vendas foram calibradas com justiça?"
+## 2. DICIONÁRIO CONTEXTUALIZADO DE MEDIDAS DAX (NEGÓCIO & SINTAXE)
 
-#### 2. Métricas Principais
+---
 
-• Meta de Vendas ($): SUM(Metas[Valor_Meta]) • Realizado ($): SUM(Vendas[Valor_Liquido]) • % Atingimento de Meta: [Realizado] / [Meta] • Margem Gerada pelo Vendedor (R$ e %): Qualidade da receita entregue pelo colaborador. • Desconto Médio por Vendedor (%): Aferir se o vendedor depende de desconto para fechar vendas. • Comissão Paga ($): Cálculo vinculado à tabela de comissões.
+### BLOCO 1: FATURAMENTO, DESCONTOS E RECEITA LÍQUIDA
 
-#### 3. Organização Espacial (Wireframe de Layout)
+#### Medida 1: Faturamento Bruto
+* **Contexto de Negócio:** Representa o valor total movimentado "a preço de tabela/etiqueta", antes de qualquer desconto promocional ou devolução. Responde: *"Qual o tamanho do nosso faturamento potencial?"*.
+* **Lógica e Sintaxe:** A tabela `vendas` não possui uma coluna com o valor total por linha. Usa-se a função iteradora `SUMX`, que multiplica linha a linha `quantidade * valor_unitario` e depois soma todo o resultado do contexto de filtro.
+```dax
+Faturamento Bruto = 
+SUMX(
+    vendas, 
+    vendas[quantidade] * vendas[valor_unitario]
+)
+```
 
-│ FILTROS: [Ano/Mês] [Loja / Canal] [Supervisor / Equipe] │ │ [Card 1] Meta Total │ [Card 2] Realizado │ [Card 3] Ating. % │ [Card 4] Comissão │ │ R$ XX M │ R$ XX M │ XX% (Geral) │ Total: R$ XX k │ │ [Visual 1: Ranking Realizado vs. Meta] │ [Visual 2: Matriz 4 Quadrantes Vendedor]│ │ Gráfico de Barras Bullet por Vendedor │ Eixo X: % Atingimento da Meta │ │ Linha indicadora = 100% da Meta │ Eixo Y: Margem de Contribuição % │ │ Cores: Verde (Atingiu) / Vermelho (Não) │ Q1: Alta MC + Bateu Meta (Estrelas) │ │ │ Q2: Baixa MC + Bateu Meta (Alerta!) │ │ [Visual 3: Tabela de Desempenho Individual] │ │ Vendedor │ Meta │ Realizado │ % Ating. │ Desc. Médio │ MC Gerada (R$) │ MC % │ Com. │ ──────
+#### Medida 2: Valor Total de Descontos
+* **Contexto de Negócio:** Mensura em reais o volume financeiro concedido em reduções de preço. Essencial para verificar se a equipe comercial está corroendo a rentabilidade para bater metas.
+* **Lógica e Sintaxe:** A coluna `perc_desconto` contém valores percentuais inteiros (ex: 10 para 10%). A fórmula divide esse campo por 100 para aplicar a alíquota correta sobre o valor bruto de cada item vendido.
+```dax
+Valor Descontos = 
+SUMX(
+    vendas, 
+    vendas[quantidade] * vendas[valor_unitario] * (vendas[perc_desconto] / 100)
+)
+```
 
-📄 Página 5: Inteligência de Clientes, Concentração & Retenção
-#### 1. O que responde à Diretoria?
+#### Medida 3: % Médio de Desconto Praticado
+* **Contexto de Negócio:** Indicador de governança comercial. Mede o percentual médio de desconto que incide sobre a receita bruta total.
+* **Lógica e Sintaxe:** Utiliza `DIVIDE` em vez da barra `/`. A função `DIVIDE(numerador, denominador, 0)` trata divisões por zero com segurança, evitando falhas em períodos sem movimentação.
+```dax
+% Desconto Médio = 
+DIVIDE([Valor Descontos], [Faturamento Bruto], 0)
+```
 
-│ "Temos risco de dependência excessiva em poucos clientes corporativos (PJ)? Os clientes novos voltam a comprar ou │ há churn acelerado?"
+#### Medida 4: Valor Total de Devoluções
+* **Contexto de Negócio:** Estorna da receita o impacto de produtos devolvidos por avaria, erro de pedido ou desistência do cliente.
+* **Lógica e Sintaxe:** Itera sobre a tabela `devolucoes`. Busca o preço unitário e o desconto original da venda na tabela relacionada `vendas`, garantindo que o valor estornado seja exatamente o valor líquido pago pelo cliente.
+```dax
+Valor Devoluções = 
+SUMX(
+    devolucoes,
+    VAR _VendaID = devolucoes[id_venda]
+    VAR _PrecoUnitario = LOOKUPVALUE(vendas[valor_unitario], vendas[id_venda], _VendaID)
+    VAR _PercDesconto = LOOKUPVALUE(vendas[perc_desconto], vendas[id_venda], _VendaID)
+    RETURN
+    devolucoes[quantidade_devolvida] * _PrecoUnitario * (1 - (_PercDesconto / 100))
+)
+```
 
-#### 2. Métricas Principais
+#### Medida 5: Faturamento Líquido (Receita Líquida Real)
+* **Contexto de Negócio:** É o dinheiro real que entra no caixa da FarmaVida. É a métrica oficial sobre a qual incidem o CMV, os custos variáveis e a margem de contribuição.
+* **Lógica e Sintaxe:** Subtração direta reaproveitando as medidas bases já calculadas (medidas encadeadas mantêm a integridade contábil do relatório).
+```dax
+Faturamento Líquido = 
+[Faturamento Bruto] - [Valor Descontos] - [Valor Devoluções]
+```
 
-• Clientes Ativos: Clientes com compra no período selecionado. • Concentração Pareto (80/20): % do faturamento gerado pelo top 10% ou 20% de clientes. • Segmentação RFV: Recência (dias desde a última compra), Frequência (qtd pedidos) e Valor (faturamento total acumulado). • Taxa de Retenção de Coortes (%): Clientes que compraram no mês M₀ e continuam ativos em M₁, M₂, M₃ …. • Base Inativa (>60/90 dias): Clientes dormentes para ação de reativação.
+#### Medida 6: Quantidade Vendida e Pedidos
+* **Contexto de Negócio:** Indicadores operacionais de volume físico e número de notas/pedidos emitidos.
+```dax
+Quantidade Vendida = 
+SUM(vendas[quantidade])
 
-#### 3. Organização Espacial (Wireframe de Layout)
+Total Pedidos = 
+DISTINCTCOUNT(vendas[num_nota_fiscal])
+```
 
-│ FILTROS: [Tipo de Cliente: PF / PJ] [Segmento RFV] [Canal de Compra] │ │ [Card 1] Clientes │ [Card 2] Ticket │ [Card 3] Pareto │ [Card 4] Clientes │ │ Ativos: XX.XXX │ Médio: R$ XXX │ Top 10 Clientes:X%│ Inativos: X.XXX │ │ [Visual 1: Curva de Pareto ABC de Clientes] │ [Visual 2: Segmentação RFV (Treemap)]│ │ Colunas: Receita acumulada por cliente │ Blocos: Campeões, Fiéis, Potenciais, │ │ Linha: % Acumulado (revela dependência) │ Em Risco, Inativos │ │ [Visual 3: Matriz de Coortes (Cohort Retenção)] │ [Visual 4: Tabela de Ação CRM] │ │ Mês Cadastro │ M0 │ M1 │ M2 │ M3 │ M4 │ Top Clientes Em Risco/Inativos │ │ Com gradiente de calor (% clientes que retornam)│ Cliente | Últ. Compra | Histórico│ ──────
+#### Medida 7: Ticket Médio
+* **Contexto de Negócio:** Receita média gasta por cada pedido finalizado. Ajuda a identificar se o crescimento da receita é puxado por volume de clientes ou por compras maiores.
+```dax
+Ticket Médio = 
+DIVIDE([Faturamento Líquido], [Total Pedidos], 0)
+```
 
-📄 Página 6: Mix de Produtos & Oportunidades de Portfólio
-#### 1. O que responde à Diretoria?
+---
 
-│ "Quais categorias e tipos de medicamentos sustentam a rentabilidade (Marca Própria e Genéricos vs. Referência)? │ Quais produtos devem ser promovidos juntos (Cross-sell)?"
+### BLOCO 2: CUSTOS, MARGEM DE CONTRIBUIÇÃO E RENTABILIDADE
 
-#### 2. Métricas Principais
+#### Medida 8: Custo das Mercadorias Vendidas (CMV)
+* **Contexto de Negócio:** Aponta quanto a FarmaVida pagou à indústria/fornecedores para adquirir os produtos comercializados no período.
+* **Lógica e Sintaxe:** Como o custo na tabela `custo_produto` varia historicamente mês a mês (`ano` e `mes`), a fórmula identifica o ano e o mês da venda e busca o custo unitário correspondente via `LOOKUPVALUE`.
+```dax
+CMV = 
+SUMX(
+    vendas,
+    VAR _Ano = YEAR(vendas[data_venda])
+    VAR _Mes = MONTH(vendas[data_venda])
+    VAR _ProdRef = RELATED(produtos[cod_produto])
+    VAR _CustoUnitario = 
+        LOOKUPVALUE(
+            custo_produto[custo_unitario],
+            custo_produto[ano], _Ano,
+            custo_produto[mes], _Mes,
+            custo_produto[cod_produto_ref], _ProdRef
+        )
+    RETURN
+    vendas[quantidade] * COALESCE(_CustoUnitario, 0)
+)
+```
+> 💡 *Dica de Performance:* Caso prefira acelerar o processamento, mescle a coluna de custo unitário diretamente na tabela `vendas` no Power Query utilizando a chave composta `cod_produto + ano + mes`.
 
-• Margem por Tipo de Medicamento: Comparativo Genérico vs. Referência vs. Similar. • Penetração de Marca Própria (%): Representatividade da marca própria FarmaVida no volume e na margem total. • Matriz BCG de Produtos: Classificação em Estrelas (Alto volume / Alta margem), Vacas Leiteiras (Alto volume / Baixa margem), etc. • Regras de Associação / Cesta de Compras: Produtos com maior co-ocorrência no mesmo pedido.
+#### Medida 9: Margem de Contribuição (R$)
+* **Contexto de Negócio:** É a sobra financeira gerada pelas vendas para cobrir as despesas fixas da empresa e gerar lucro líquido. Indica a contribuição efetiva de cada unidade de negócio.
+```dax
+Margem Contribuicao = 
+[Faturamento Líquido] - [CMV]
+```
 
-#### 3. Organização Espacial (Wireframe de Layout)
+#### Medida 10: % Margem de Contribuição
+* **Contexto de Negócio:** É o percentual de rentabilidade de cada produto, categoria ou canal. Revela a eficiência operacional: cada R$ 100 vendidos geram quanto de margem?
+```dax
+% Margem Contribuicao = 
+DIVIDE([Margem Contribuicao], [Faturamento Líquido], 0)
+```
 
-│ FILTROS: [Categoria] [Tipo: Genérico/Ref/Similar] [Marca Própria: Sim/Não] │ │ [Card 1] Faturam. │ [Card 2] Margem │ [Card 3] Mix % │ [Card 4] Mix % │ │ Portfólio: R$ XX M │ Portfólio: XX% │ Marca Própria: X% │ Genéricos: X% │ │ [Visual 1: Margem Marca Própria x Terceiro] │ [Visual 2: Matriz BCG de Portfólio]│ │ Barras clusterizadas comparando: │ Eixo X: Volume de Vendas │ │ • Genéricos vs. Referência │ Eixo Y: Margem de Contribuição % │ │ • Marca Própria vs. Terceiros │ Bolhas: Produtos/Subcategorias │ │ [Visual 3: Sazonalidade das Categorias] │ [Visual 4: Matriz de Cross-Sell] │ │ Gráficos múltiplos (Small Multiples) │ Tabela/Heatmap de Co-ocorrência │ │ Evolução mês a mês por categoria │ "Quem comprou Produto A comprou B" │ ──────
+#### Medida 11: % Devoluções sobre o Faturamento
+* **Contexto de Negócio:** Mede a taxa de perda por devolução. Se estiver acima de 2-3%, acende o alerta de qualidade logística ou insatisfação de clientes.
+```dax
+% Devoluções = 
+DIVIDE([Valor Devoluções], [Faturamento Bruto], 0)
+```
 
-💡 Recomendações de Interatividade no Power BI
-Drill-Through Estratégico:
-• Configurar botão de drill-through da Página 1 (Mix por Canal) ou Página 2 direto para a Página 4 (Vendedores daquela loja).
+---
 
-Tooltips Personalizados (Dica de Ferramenta em Página):
-• Ao passar o mouse sobre uma loja no mapa (Pág. 2) ou sobre um vendedor (Pág. 4), abrir um mini-card com o histórico dos últimos 3 meses e a taxa de devolução.
+### BLOCO 3: INTELIGÊNCIA TEMPORAL E CRESCIMENTO (YoY)
 
-Formatação Condicional Semáforo:
-• Margem de contribuição < 20% em vermelho suave, 20%–35% em amarelo, > 35% em verde em todas as matrizes.
+#### Medida 12: Faturamento Líquido Ano Anterior (LY)
+* **Contexto de Negócio:** Base comparativa para aferir crescimento sustentável ano contra ano (eliminando sazonalidades).
+* **Lógica e Sintaxe:** `CALCULATE` aplica a função de Time Intelligence `SAMEPERIODLASTYEAR` sobre a dimensão de calendário `dCalendario[Date]`.
+```dax
+Faturamento Líquido LY = 
+CALCULATE(
+    [Faturamento Líquido],
+    SAMEPERIODLASTYEAR(dCalendario[Date])
+)
+```
 
+#### Medida 13: Crescimento Anual (% YoY)
+* **Contexto de Negócio:** Taxa percentual de expansão da empresa em relação ao mesmo período do ano anterior.
+```dax
+% Faturamento Líquido YoY = 
+DIVIDE([Faturamento Líquido] - [Faturamento Líquido LY], [Faturamento Líquido LY], 0)
+```
+
+---
+
+### BLOCO 4: GESTÃO COMERCIAL, METAS E GOVERNANÇA
+
+#### Medida 14: Meta Total de Vendas
+* **Contexto de Negócio:** O orçamento de vendas estipulado pela diretoria para os colaboradores e lojas.
+```dax
+Total Meta = 
+SUM(metas_vendedor[meta_receita_liquida])
+```
+
+#### Medida 15: % Atingimento da Meta
+* **Contexto de Negócio:** Revela o percentual de cumprimento da meta planejada (`>= 100%` indica meta batida).
+```dax
+% Atingimento Meta = 
+DIVIDE([Faturamento Líquido], [Total Meta], 0)
+```
+
+#### Medida 16: Volume e % de Vendas Fora da Política Comercial
+* **Contexto de Negócio:** A política comercial estipula tetos de desconto (exemplo: 15% para loja física e 20% para e-commerce). Transações acima desse teto ferem a governança e destroem a margem.
+* **Lógica e Sintaxe:** `CALCULATE` com `FILTER` isola apenas as transações com desconto acima da política e divide pela quantidade total de transações.
+```dax
+Qtd Vendas Fora Politica = 
+CALCULATE(
+    COUNTROWS(vendas),
+    vendas[perc_desconto] > 15
+)
+
+% Vendas Fora da Política = 
+DIVIDE([Qtd Vendas Fora Politica], COUNTROWS(vendas), 0)
+```
+
+---
+
+### BLOCO 5: CLIENTES, CONCENTRAÇÃO E MIX DE PRODUTOS
+
+#### Medida 17: Clientes Ativos
+* **Contexto de Negócio:** Quantidade de clientes únicos que compraram no período filtrado.
+```dax
+Qtd Clientes Ativos = 
+DISTINCTCOUNT(vendas[cod_cliente])
+```
+
+#### Medida 18: Faturamento e Mix de Marca Própria (%)
+* **Contexto de Negócio:** Produtos de Marca Própria (marca FarmaVida) oferecem margem superior aos produtos de grandes laboratórios multinacionais. A diretoria precisa ver a penetração dessa linha no faturamento total.
+```dax
+// Faturamento absoluto da Marca Própria
+Faturamento Marca Própria = 
+CALCULATE(
+    [Faturamento Líquido],
+    FILTER(produtos, LOWER(produtos[marca]) = "farmavida")
+)
+
+// Representatividade percentual no faturamento
+% Faturamento Marca Própria = 
+DIVIDE([Faturamento Marca Própria], [Faturamento Líquido], 0)
+```
+
+---
+
+## 3. ROTEIRO DE MODELAGEM E EXECUÇÃO NO POWER BI
+
+1. **Tabela de Calendário (dCalendario):**
+   * Criar via DAX cobrindo o período dos dados:
+     ```dax
+     dCalendario = 
+     ADDCOLUMNS(
+         CALENDAR(DATE(2023, 1, 1), DATE(2024, 12, 31)),
+         "Ano", YEAR([Date]),
+         "MesNum", MONTH([Date]),
+         "MesNome", FORMAT([Date], "mmm", "pt-BR"),
+         "MesAno", FORMAT([Date], "mmm/yyyy", "pt-BR"),
+         "AnoMesInt", YEAR([Date]) * 100 + MONTH([Date])
+     )
+     ```
+   * Classificar a coluna `MesNome` pela coluna `MesNum`.
+   * Marcar como Tabela de Data oficial.
+
+2. **Relacionamentos no Modelo Estrela (Star Schema):**
+   * `dCalendario[Date]` (1) ➔ `vendas[data_venda]` (N)
+   * `lojas[cod_loja]` (1) ➔ `vendas[cod_loja]` (N)
+   * `vendedores[cod_vendedor]` (1) ➔ `vendas[cod_vendedor]` (N)
+   * `clientes[cod_cliente]` (1) ➔ `vendas[cod_cliente]` (N)
+   * `produtos[cod_produto]` (1) ➔ `vendas[cod_produto]` (N)
+   * `vendas[id_venda]` (1) ➔ `devolucoes[id_venda]` (N)
+   * `dCalendario` e `vendedores` relacionados à tabela `metas_vendedor`.
+
+3. **Garantia de Entrega Ágil (Padrão de Layout):**
+   * Monte a estrutura da **Página 1** (Cabeçalho com logo, 4 Cards KPI, 2 visuais centrais e 1 matriz inferior).
+   * Utilize a paleta institucional (Azul institucional `#005088`, Verde rentabilidade `#2E7D32`, Vermelho alerta `#C62828`, Cinza neutro `#F4F5F7`).
+   * Duplique a página para as Páginas 2, 3 e 4, reaproveitando alinhamentos, fontes e formatações.
